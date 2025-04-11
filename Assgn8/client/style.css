@@ -1,0 +1,118 @@
+/* Reset default styles and set up the base */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #978;
+  font-family: 'Orbitron', sans-serif; /* Futuristic font */
+}
+
+/* Canvas styling with a space-themed background */
+#gameCanvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  background: radial-gradient(circle at center, #9696af 0%, #978 70%); /* Deep space gradient */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle starfield effect using a pseudo-element */
+#gameCanvas::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.3)"/></svg>') repeat;
+  opacity: 0.5;
+  animation: twinkle 5s infinite alternate;
+}
+
+/* Twinkle animation for stars */
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.6; }
+}
+
+/* HUD container */
+#hud {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #00ffcc; /* Neon cyan for a sci-fi look */
+  text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; /* Glowing effect */
+  z-index: 10;
+}
+
+/* Instructions box */
+#instructions {
+  background: linear-gradient(145deg, rgba(10, 10, 50, 0.9), rgba(0, 0, 30, 0.7)); /* Gradient background */
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 2px solid #00ffcc;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+  animation: pulse 2s infinite;
+}
+
+#instructions h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  color: #ff00ff; /* Neon magenta for the title */
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+#instructions p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #ffffff;
+  text-shadow: 0 0 5px #ffffff;
+}
+
+/* Health display */
+#health {
+  margin-top: 15px;
+  font-size: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ff00ff;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+}
+
+#healthValue {
+  color: #ff3333; /* Red for health value */
+  text-shadow: 0 0 5px #ff3333;
+}
+
+/* Pulse animation for glowing effect */
+@keyframes pulse {
+  0% { box-shadow: 0 0 15px rgba(0, 255, 204, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(0, 255, 204, 0.8); }
+  100% { box-shadow: 0 0 15px rgba(0, 255, 204, 0.5); }
+}
+
+/* Style for the dynamically created Restart button */
+#restartButton {
+  position: absolute;
+  padding: 15px 30px;
+  font-size: 24px;
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  background: linear-gradient(90deg, #ff00ff, #00ffcc); /* Gradient button */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.7), 0 0 30px rgba(0, 255, 204, 0.7);
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+#restartButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(255, 0, 255, 1), 0 0 40px rgba(0, 255, 204, 1);
+}
+
+#restartButton:active {
+  transform: scale(0.95);
+}
